@@ -1,0 +1,12 @@
+from collections import defaultdict
+class Solution:
+    def lengthOfLongestSubstring(self, s: str) -> int:
+        answer = 0
+        index_map = {}
+        j=0
+        for i in range(len(s)):
+            if s[i] in index_map:
+                j = max(index_map[s[i]],j)
+            answer = max(answer, i-j+1)
+            index_map[s[i]] = i+1
+        return answer
